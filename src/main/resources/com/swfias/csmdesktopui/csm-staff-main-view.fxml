@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import java.net.URL?>
+<TabPane fx:controller="com.swfias.csmdesktopui.CSMStaffController"
+          xmlns:fx="http://javafx.com/fxml" prefWidth="600" prefHeight="400">
+    <tabs>
+        <Tab text="Staff main page" closable="false">
+            <content>
+                <AnchorPane styleClass="root">
+                    <Button styleClass="button1" text="Log Out" onAction="#onLogOutStaffClick" AnchorPane.rightAnchor="10"
+                            AnchorPane.topAnchor="10"/>
+
+                    <Label fx:id="staffNameLabel" styleClass="label1" AnchorPane.leftAnchor="10"
+                           AnchorPane.topAnchor="10"/>
+
+                </AnchorPane>
+            </content>
+        </Tab>
+        <Tab text="Assigning work" closable="false" >
+            <content>
+                <AnchorPane>
+                    <!-- Content for Tab 2 goes here -->
+                    <Label text="Content for Tab 2" />
+                </AnchorPane>
+            </content>
+        </Tab>
+    </tabs>
+    <stylesheets>
+        <URL value="@staffView.css"/>
+    </stylesheets>
+</TabPane>
