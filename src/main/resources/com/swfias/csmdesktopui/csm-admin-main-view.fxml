@@ -1,113 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-
-<?import javafx.geometry.Insets?>
 <?import java.net.URL?>
 <?import javafx.scene.text.Text?>
 
 <TabPane fx:controller="com.swfias.csmdesktopui.CSMAdminController"
          xmlns:fx="http://javafx.com/fxml" prefWidth="600" prefHeight="400">
     <tabs>
-        <Tab text="Add New Employee" closable="false">
+        <Tab text="Person Management" closable="false">
             <ScrollPane fitToWidth="true" fitToHeight="true" hbarPolicy="AS_NEEDED" vbarPolicy="AS_NEEDED">
                 <content>
                     <AnchorPane styleClass="root">
                         <Button styleClass="button1" text="Log Out" onAction="#onLogOutAdminClick"
-                                AnchorPane.rightAnchor="10"
-                                AnchorPane.topAnchor="10"/>
+                                AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10"/>
+                        <Label fx:id="adminNameLabel" styleClass="label1" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="10"/>
 
-                        <Label fx:id="adminNameLabel" styleClass="label1" AnchorPane.leftAnchor="10"
-                               AnchorPane.topAnchor="10"/>
+                        <GridPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" alignment="CENTER" vgap="20">
+                            <VBox spacing="20" alignment="CENTER">
+                                <HBox alignment="CENTER">
+                                    <Text styleClass="label2" textAlignment="CENTER">Create New Person</Text>
+                                </HBox>
+                                <GridPane hgap="10" vgap="10" alignment="CENTER">
+                                    <Label styleClass="label3" text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                                    <ComboBox fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300"/>
 
-                        <GridPane AnchorPane.topAnchor="140" AnchorPane.leftAnchor="50"
-                                  AnchorPane.rightAnchor="50" alignment="CENTER">
-                            <GridPane hgap="10" vgap="10" alignment="CENTER" GridPane.rowIndex="1">
+                                    <Label styleClass="label3" text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                                    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
 
-                                <VBox spacing="20" GridPane.columnIndex="1"
-                                      GridPane.rowIndex="1">
-                                    <HBox alignment="CENTER">
-                                        <Text styleClass="label2" textAlignment="CENTER">Create New Employee
-                                        </Text>
-                                    </HBox>
-                                </VBox>
-                                <Label GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <Label styleClass="label3" text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                                    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300"/>
 
-                                <Label styleClass="label3" text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                                <ComboBox fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300"/>
+                                    <Label styleClass="label3" text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                    <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300"/>
 
-                                <Label styleClass="label3" text="First Name:" GridPane.columnIndex="0"
-                                       GridPane.rowIndex="4"/>
-                                <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300"/>
+                                    <Label styleClass="label3" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                                    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300"/>
 
-                                <Label styleClass="label3" text="Last Name:" GridPane.columnIndex="0"
-                                       GridPane.rowIndex="5"/>
-                                <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="5" prefWidth="300"/>
+                                    <Label styleClass="label3" text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                                    <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="5" prefWidth="300"/>
 
-                                <Label styleClass="label3" text="Password:" GridPane.columnIndex="0"
-                                       GridPane.rowIndex="6"/>
-                                <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="6" prefWidth="300"/>
+                                    <Label styleClass="label3" text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                                    <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" prefWidth="300"/>
+                                </GridPane>
+                                <HBox alignment="CENTER">
+                                    <Button styleClass="button2" text="Create" onAction="#onCreateNewEmployee"/>
+                                </HBox>
+                            </VBox>
 
-                                <Label styleClass="label3" text="Email:" GridPane.columnIndex="0"
-                                       GridPane.rowIndex="7"/>
-                                <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="7" prefWidth="300"/>
-
-                                <Label styleClass="label3" text="Address:" GridPane.columnIndex="0"
-                                       GridPane.rowIndex="8"/>
-                                <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="8" prefWidth="300"/>
-
-                                <Label styleClass="label3" text="Phone Number:" GridPane.columnIndex="0"
-                                       GridPane.rowIndex="9"/>
-                                <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="9" prefWidth="300"/>
-
-
-                                <VBox spacing="20" GridPane.columnIndex="1" GridPane.rowIndex="10">
-                                    <HBox alignment="CENTER">
-                                        <Button styleClass="button2" text="Create" onAction="#onCreateNewEmployee"/>
-                                    </HBox>
-                                </VBox>
-                                <Label GridPane.columnIndex="0" GridPane.rowIndex="11"/>
-                                <Label GridPane.columnIndex="0" GridPane.rowIndex="12"/>
-                            </GridPane>
-                            <GridPane hgap="10" vgap="10" GridPane.rowIndex="2">
-                                <VBox spacing="20" GridPane.columnIndex="4" GridPane.rowIndex="0">
-                                    <HBox alignment="CENTER">
-                                        <Text styleClass="label2" textAlignment="CENTER">All employee information
-                                        </Text>
-                                    </HBox>
-                                </VBox>
-                                <Label GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-                                <Label styleClass="label3" text="Search:" GridPane.columnIndex="0"
-                                       GridPane.rowIndex="2"/>
-                                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2"/>
-                                <Label styleClass="label3" text="Created Date:" GridPane.columnIndex="3"
-                                       GridPane.rowIndex="2"/>
-                                <DatePicker GridPane.columnIndex="4" GridPane.rowIndex="2"/>
-                                <Label styleClass="label3" text="Severity:" GridPane.columnIndex="5"
-                                       GridPane.rowIndex="2"/>
-                                <ComboBox GridPane.columnIndex="6" GridPane.rowIndex="2" prefWidth="150"/>
-                                <Button styleClass="button2" text="Search" GridPane.columnIndex="7"
-                                        GridPane.rowIndex="2"/>
-                                <Label GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                                <Label GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                            </GridPane>
+                            <Label GridPane.rowIndex="1"/>
+                            <Label GridPane.rowIndex="2"/>
+                            <VBox spacing="20" alignment="CENTER" GridPane.rowIndex="3">
+                                <HBox alignment="CENTER">
+                                    <Text styleClass="label2" textAlignment="CENTER">All Persons' Information</Text>
+                                </HBox>
+                                <TextField fx:id="searchField" promptText="Search..."/>
+                                <ComboBox fx:id="filterComboBox" promptText="Filter by Column"/>
+                                <TableView fx:id="tableView">
+                                    <columns>
+                                        <TableColumn fx:id="column1" text="User Id" prefWidth="100"/>
+                                        <TableColumn fx:id="column2" text="Type" prefWidth="100"/>
+                                        <TableColumn fx:id="column3" text="First Name" prefWidth="100"/>
+                                        <TableColumn fx:id="column4" text="Last Name" prefWidth="100"/>
+                                        <TableColumn fx:id="column5" text="Password" prefWidth="150"/>
+                                        <TableColumn fx:id="column6" text="Email" prefWidth="150"/>
+                                        <TableColumn fx:id="column7" text="Address" prefWidth="150"/>
+                                        <TableColumn fx:id="column8" text="Phone Number" prefWidth="150"/>
+                                    </columns>
+                                </TableView>
+                            </VBox>
+                            <Label GridPane.rowIndex="4"></Label>
                         </GridPane>
                     </AnchorPane>
                 </content>
             </ScrollPane>
         </Tab>
-        <Tab text="Assign work" closable="false">
+        <Tab text="Customer Support (Cases)" closable="false">
             <content>
                 <AnchorPane>
-                    <!-- Content for Tab 2 goes here -->
-                    <Label text="Content for Tab 2"/>
+                    <GridPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" alignment="CENTER" vgap="20">
+                        <VBox spacing="20" alignment="CENTER">
+                            <HBox alignment="CENTER">
+                                <Text styleClass="label2" textAlignment="CENTER">All Report Information</Text>
+                            </HBox>
+                            <TextField fx:id="searchField2" promptText="Search..."/>
+                            <ComboBox fx:id="filterComboBox2" promptText="Filter by Column"/>
+                            <TableView fx:id="tableView2">
+                                <columns>
+                                    <TableColumn fx:id="column1_1" text="Title" prefWidth="100"/>
+                                    <TableColumn fx:id="column2_1" text="Description" prefWidth="150"/>
+                                    <TableColumn fx:id="column3_1" text="Created" prefWidth="150"/>
+                                    <TableColumn fx:id="column4_1" text="Status" prefWidth="100"/>
+                                    <TableColumn fx:id="column5_1" text="Severity" prefWidth="100"/>
+                                    <TableColumn fx:id="column6_1" text="Solved By" prefWidth="100"/>
+                                    <TableColumn fx:id="column7_1" text="Details" prefWidth="150"/>
+                                    <TableColumn fx:id="column8_1" text="Fix Date" prefWidth="150"/>
+                                </columns>
+                            </TableView>
+                        </VBox>
+                    </GridPane>
                 </AnchorPane>
             </content>
         </Tab>
+
     </tabs>
     <stylesheets>
         <URL value="@adminView.css"/>

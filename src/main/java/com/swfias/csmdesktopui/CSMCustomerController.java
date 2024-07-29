@@ -190,9 +190,6 @@ public class CSMCustomerController implements Initializable {
         }
     }
 
-    public void handleExportToExcel(ActionEvent actionEvent) {
-    }
-
     private void loadTask(){
         Task<Void> loadDataTask = new Task<>() {
             @Override
