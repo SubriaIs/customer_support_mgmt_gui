@@ -52,7 +52,8 @@ public class CSMApplication extends Application {
         try {
             Scene scene1 = new Scene(staffViewLoader.load(), 1260,620);
             CSMStaffController controller1 = staffViewLoader.getController();
-            controller1.setStaff(staff.getFirstName()+" "+staff.getLastName());
+            controller1.setStaffName(staff.getFirstName()+" "+staff.getLastName());
+            controller1.setStaff(staff);
             stage.setScene(scene1);
             stage.setTitle("Staff View - CSM");
         } catch (Exception e) {

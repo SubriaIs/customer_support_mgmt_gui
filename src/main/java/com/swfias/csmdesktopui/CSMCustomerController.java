@@ -18,7 +18,6 @@ import org.swfias.enums.SeverityType;
 import org.swfias.enums.StatusType;
 import org.swfias.services.CaseService;
 import org.swfias.services.PersonService;
-
 import java.net.URL;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
