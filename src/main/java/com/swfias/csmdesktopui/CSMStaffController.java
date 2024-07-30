@@ -13,10 +13,15 @@ import org.swfias.daos.CaseDao;
 import org.swfias.daos.PersonDao;
 import org.swfias.dtos.CaseDto;
 import org.swfias.dtos.StaffDto;
+import org.swfias.enums.SeverityType;
+import org.swfias.enums.StatusType;
 import org.swfias.services.CaseService;
 import org.swfias.services.PersonService;
 import java.net.URL;
+import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,12 +52,21 @@ public class CSMStaffController implements Initializable {
     @FXML
     private TextField searchField;
     @FXML
+    private TextField searchFieldForTitle;
+    @FXML
     private ComboBox<String> filterComboBox;
+
+    @FXML
+    public TextArea reportDetails;
+
+    @FXML
+    public DatePicker datePicker;
 
     private ObservableList<TableModel> data;
     private FilteredList<TableModel> filteredData;
     private List<CaseDto> caseDtos;
     private StaffDto staff;
+    private TableModel tableModel;
 
 
     @Override
@@ -160,6 +174,50 @@ public class CSMStaffController implements Initializable {
         this.staff = staff;
     }
 
+
     public void onCreateClickStaff(ActionEvent actionEvent) {
+        CaseService caseService = new CaseService(new CaseDao(), new PersonDao());
+        LocalDate localDate = datePicker.getValue();
+        Date resolvedDate = (localDate != null) ? Date.valueOf(localDate) : null;
+        String searchTitle = searchFieldForTitle.getText().trim();
+        if (searchTitle.isEmpty()) {
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setTitle("No title entered!");
+            warningAlert.setHeaderText("Please enter a title to search.");
+            warningAlert.showAndWait();
+            return;
+        }
+        CaseDto matchingCase = (CaseDto) caseService.getCaseByTitle(searchTitle);
+        if (matchingCase == null) {
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setTitle("No case found!");
+            warningAlert.setHeaderText("No case found with the given title.");
+            warningAlert.showAndWait();
+            return;
+        }
+
+
+        matchingCase.setResolutionDetails(reportDetails.getText());
+        matchingCase.setResolvedDate(resolvedDate);
+        if (caseService.updateCase(matchingCase)) {
+            reportDetails.setText("");
+            datePicker.setValue(null);
+            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+            infoAlert.setTitle("Report has been saved!");
+            infoAlert.setHeaderText("Report :" + matchingCase.getTitle());
+            infoAlert.setContentText("Report Details :" + matchingCase.getDescription());
+            infoAlert.showAndWait();
+            loadTask();
+        } else {
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setTitle("Something went wrong!");
+            warningAlert.setHeaderText("System Error!");
+            warningAlert.setContentText("Contact system administrator.");
+            warningAlert.showAndWait();
+        }
+
+
+
+
     }
 }

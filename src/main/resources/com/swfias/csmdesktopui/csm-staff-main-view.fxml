@@ -27,7 +27,7 @@
                                 <Label styleClass="label3" text="Search:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
                                 <TextField fx:id="searchFieldForTitle" promptText="Search by title..." GridPane.columnIndex="1" GridPane.rowIndex="0"/>
                                 <Label styleClass="label3" text="Details:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                                <TextArea fx:id="reportDescription" prefWidth="500" prefHeight="100" wrapText="true"
+                                <TextArea fx:id="reportDetails" prefWidth="500" prefHeight="100" wrapText="true"
                                           style="-fx-alignment: top-left;" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                                 <Label styleClass="label3" text="Fix date:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
                                 <DatePicker fx:id="datePicker" promptText="Select Date" GridPane.columnIndex="1" GridPane.rowIndex="2"/>

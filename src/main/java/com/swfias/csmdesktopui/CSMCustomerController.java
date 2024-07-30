@@ -20,6 +20,7 @@ import org.swfias.services.CaseService;
 import org.swfias.services.PersonService;
 import java.net.URL;
 import java.sql.Date;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -60,6 +61,8 @@ public class CSMCustomerController implements Initializable {
     private TableColumn<TableModel, String> column8;
     @FXML
     private TextField searchField;
+
+
     @FXML
     private ComboBox<String> filterComboBox;
 
@@ -169,23 +172,33 @@ public class CSMCustomerController implements Initializable {
     public void onCreateClick(ActionEvent actionEvent) {
         CaseService caseService = new CaseService(new CaseDao(), new PersonDao());
         CaseDto caseDto = new CaseDto(this.customer.getId(), reportTitle.getText(), reportDescription.getText(), new Date(System.currentTimeMillis()), StatusType.OPEN, reportSeverity.getValue(), -1, null, null);
-        if(caseService.addNewCase(caseDto)){
+        try {
+            if (caseService.addNewCase(caseDto)) {
+                reportTitle.setText("");
+                reportDescription.setText("");
+                reportSeverity.cancelEdit();
+                Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
+                infoAlert.setTitle("Report has been saved!");
+                infoAlert.setHeaderText("Report :" + caseDto.getTitle());
+                infoAlert.setContentText("Report Details :" + caseDto.getDescription());
+                infoAlert.showAndWait();
+                loadTask();
+            } else {
+                Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+                warningAlert.setTitle("Something went wrong!");
+                warningAlert.setHeaderText("Duplicate title!");
+                warningAlert.setContentText("Please enter new title.");
+                warningAlert.showAndWait();
+            }
+        } catch (IllegalArgumentException e) {
+            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
+            warningAlert.setTitle("Duplicate Report Title!");
+            warningAlert.setHeaderText("Case Title Error!");
+            warningAlert.setContentText(e.getMessage());
+            warningAlert.showAndWait();
             reportTitle.setText("");
             reportDescription.setText("");
             reportSeverity.cancelEdit();
-            Alert infoAlert = new Alert(Alert.AlertType.INFORMATION);
-            infoAlert.setTitle("Report has been saved!");
-            infoAlert.setHeaderText("Report :"+caseDto.getTitle());
-            infoAlert.setContentText("Report Details :"+caseDto.getDescription());
-            infoAlert.showAndWait();
-            loadTask();
-        }
-        else{
-            Alert warningAlert = new Alert(Alert.AlertType.WARNING);
-            warningAlert.setTitle("Something went wrong!");
-            warningAlert.setHeaderText("System Error!");
-            warningAlert.setContentText("Contact system administrator.");
-            warningAlert.showAndWait();
         }
     }
 
