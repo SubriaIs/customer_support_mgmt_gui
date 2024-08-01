@@ -16,7 +16,7 @@ public class PersonTableModel {
         this.userId = new SimpleStringProperty(userId);
         this.type = new SimpleStringProperty(type);
         this.firstName = new SimpleStringProperty(firstName);
-        this.lastName =new SimpleStringProperty(lastName);
+        this.lastName = new SimpleStringProperty(lastName);
         this.password = new SimpleStringProperty(password);
         this.email = new SimpleStringProperty(email);
         this.address = new SimpleStringProperty(address);

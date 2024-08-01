@@ -66,7 +66,6 @@ public class CSMCustomerController implements Initializable {
     private List<CaseDto> caseDtos;
 
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         column1.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -101,7 +100,7 @@ public class CSMCustomerController implements Initializable {
                     caseDto.getSeverity().toString(),
                     personService.getPersonById(caseDto.getAssignedTo()).get().getFirstName() + " " + personService.getPersonById(caseDto.getAssignedTo()).get().getLastName(),
                     caseDto.getResolutionDetails(),
-                    caseDto.getResolvedDate()!= null ? FORMATTER.format(caseDto.getResolvedDate()) : ""
+                    caseDto.getResolvedDate() != null ? FORMATTER.format(caseDto.getResolvedDate()) : ""
             );
             tableData.add(tableModelInstance);
         }
@@ -196,7 +195,7 @@ public class CSMCustomerController implements Initializable {
         }
     }
 
-    private void loadTask(){
+    private void loadTask() {
         Task<Void> loadDataTask = new Task<>() {
             @Override
             protected Void call() throws Exception {

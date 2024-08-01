@@ -14,40 +14,50 @@
                     <AnchorPane styleClass="root">
                         <Button styleClass="button1" text="Log Out" onAction="#onLogOutAdminClick"
                                 AnchorPane.rightAnchor="10" AnchorPane.topAnchor="10"/>
-                        <Label fx:id="adminNameLabel" styleClass="label1" AnchorPane.leftAnchor="10" AnchorPane.topAnchor="10"/>
-
-                        <GridPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" alignment="CENTER" vgap="20">
+                        <Label fx:id="adminNameLabel" styleClass="label1" AnchorPane.leftAnchor="10"
+                               AnchorPane.topAnchor="10"/>
+                        <GridPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50"
+                                  alignment="CENTER" vgap="20">
                             <VBox spacing="20" alignment="CENTER">
                                 <HBox alignment="CENTER">
                                     <Text styleClass="label2" textAlignment="CENTER">Create New Person</Text>
                                 </HBox>
                                 <GridPane hgap="10" vgap="10" alignment="CENTER">
-                                    <Label styleClass="label3" text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-                                    <ComboBox fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="0" prefWidth="300"/>
+                                    <Label styleClass="label3" text="Type:" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="0"/>
+                                    <ComboBox fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="0"
+                                              prefWidth="300"/>
+                                    <Label styleClass="label3" text="First Name:" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="1"/>
+                                    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                                               prefWidth="300"/>
 
-                                    <Label styleClass="label3" text="First Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-                                    <TextField fx:id="firstNameField" GridPane.columnIndex="1" GridPane.rowIndex="1" prefWidth="300"/>
+                                    <Label styleClass="label3" text="Last Name:" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="2"/>
+                                    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                                               prefWidth="300"/>
 
-                                    <Label styleClass="label3" text="Last Name:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                    <TextField fx:id="lastNameField" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300"/>
-
-                                    <Label styleClass="label3" text="Password:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
-                                    <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="3" prefWidth="300"/>
-
-                                    <Label styleClass="label3" text="Email:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
-                                    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4" prefWidth="300"/>
-
-                                    <Label styleClass="label3" text="Address:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
-                                    <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="5" prefWidth="300"/>
-
-                                    <Label styleClass="label3" text="Phone Number:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
-                                    <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6" prefWidth="300"/>
+                                    <Label styleClass="label3" text="Password:" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="3"/>
+                                    <TextField fx:id="passwordField" GridPane.columnIndex="1" GridPane.rowIndex="3"
+                                               prefWidth="300"/>
+                                    <Label styleClass="label3" text="Email:" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="4"/>
+                                    <TextField fx:id="emailField" GridPane.columnIndex="1" GridPane.rowIndex="4"
+                                               prefWidth="300"/>
+                                    <Label styleClass="label3" text="Address:" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="5"/>
+                                    <TextField fx:id="addressField" GridPane.columnIndex="1" GridPane.rowIndex="5"
+                                               prefWidth="300"/>
+                                    <Label styleClass="label3" text="Phone Number:" GridPane.columnIndex="0"
+                                           GridPane.rowIndex="6"/>
+                                    <TextField fx:id="phoneNumberField" GridPane.columnIndex="1" GridPane.rowIndex="6"
+                                               prefWidth="300"/>
                                 </GridPane>
                                 <HBox alignment="CENTER">
                                     <Button styleClass="button2" text="Create" onAction="#onCreateNewEmployee"/>
                                 </HBox>
                             </VBox>
-
                             <Label GridPane.rowIndex="1"/>
                             <Label GridPane.rowIndex="2"/>
                             <VBox spacing="20" alignment="CENTER" GridPane.rowIndex="3">
@@ -78,7 +88,8 @@
         <Tab text="Customer Support (Cases)" closable="false">
             <content>
                 <AnchorPane>
-                    <GridPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50" alignment="CENTER" vgap="20">
+                    <GridPane AnchorPane.topAnchor="50" AnchorPane.leftAnchor="50" AnchorPane.rightAnchor="50"
+                              alignment="CENTER" vgap="20">
                         <VBox spacing="20" alignment="CENTER">
                             <HBox alignment="CENTER">
                                 <Text styleClass="label2" textAlignment="CENTER">All Report Information</Text>
@@ -102,7 +113,6 @@
                 </AnchorPane>
             </content>
         </Tab>
-
     </tabs>
     <stylesheets>
         <URL value="@adminView.css"/>

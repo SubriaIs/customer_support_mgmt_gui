@@ -16,7 +16,6 @@ import org.swfias.daos.PersonDao;
 import org.swfias.dtos.CaseDto;
 import org.swfias.dtos.PersonDto;
 import org.swfias.enums.PersonType;
-import org.swfias.enums.SeverityType;
 import org.swfias.services.CaseService;
 import org.swfias.services.PersonService;
 
@@ -118,7 +117,7 @@ public class CSMAdminController implements Initializable {
         column7.setCellValueFactory(new PropertyValueFactory<>("address"));
         column8.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 
-        this.filterComboBox.getItems().addAll("Type", "FirstName", "LastName", "UserId", "Email","Phone");
+        this.filterComboBox.getItems().addAll("Type", "FirstName", "LastName", "UserId", "Email", "Phone");
         filterComboBox.getSelectionModel().select("Type");
         loadTask();
 
@@ -139,14 +138,15 @@ public class CSMAdminController implements Initializable {
     }
 
     public void onLogOutAdminClick(ActionEvent actionEvent) {
-        try{
+        try {
             CSMApplication.switchToLogInView();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Can't load new window");
         }
     }
+
     public void setAdmin(String adminName) {
-        adminNameLabel.setText("Welcome, " + adminName  + "!");
+        adminNameLabel.setText("Welcome, " + adminName + "!");
     }
 
     public void onCreateNewEmployee(ActionEvent actionEvent) {
@@ -231,7 +231,7 @@ public class CSMAdminController implements Initializable {
         });
     }
 
-    private void loadTask(){
+    private void loadTask() {
         Task<Void> loadDataTask = new Task<>() {
             @Override
             protected Void call() throws Exception {
@@ -266,7 +266,7 @@ public class CSMAdminController implements Initializable {
                     caseDto.getSeverity().toString(),
                     personService.getPersonById(caseDto.getAssignedTo()).get().getFirstName() + " " + personService.getPersonById(caseDto.getAssignedTo()).get().getLastName(),
                     caseDto.getResolutionDetails(),
-                    caseDto.getResolvedDate()!= null ? FORMATTER.format(caseDto.getResolvedDate()) : ""
+                    caseDto.getResolvedDate() != null ? FORMATTER.format(caseDto.getResolvedDate()) : ""
             );
             tableData2.add(tableModelInstance);
         }
@@ -306,7 +306,8 @@ public class CSMAdminController implements Initializable {
             searchField2.setText("");
         });
     }
-    private void loadTask2(){
+
+    private void loadTask2() {
         Task<Void> loadDataTask = new Task<>() {
             @Override
             protected Void call() throws Exception {

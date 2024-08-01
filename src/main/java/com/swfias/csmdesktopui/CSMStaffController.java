@@ -13,19 +13,18 @@ import org.swfias.daos.CaseDao;
 import org.swfias.daos.PersonDao;
 import org.swfias.dtos.CaseDto;
 import org.swfias.dtos.StaffDto;
-import org.swfias.enums.SeverityType;
 import org.swfias.enums.StatusType;
 import org.swfias.services.CaseService;
 import org.swfias.services.PersonService;
 import java.net.URL;
 import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.ResourceBundle;
+
 import javafx.fxml.Initializable;
 
 public class CSMStaffController implements Initializable {
@@ -69,7 +68,6 @@ public class CSMStaffController implements Initializable {
     private FilteredList<TableModel> filteredData;
     private List<CaseDto> caseDtos;
     private StaffDto staff;
-    private TableModel tableModel;
 
 
     @Override
@@ -107,7 +105,7 @@ public class CSMStaffController implements Initializable {
                     caseDto.getSeverity().toString(),
                     personService.getPersonById(caseDto.getAssignedTo()).get().getFirstName() + " " + personService.getPersonById(caseDto.getAssignedTo()).get().getLastName(),
                     caseDto.getResolutionDetails(),
-                    caseDto.getResolvedDate()!= null ? FORMATTER.format(caseDto.getResolvedDate()) : ""
+                    caseDto.getResolvedDate() != null ? FORMATTER.format(caseDto.getResolvedDate()) : ""
             );
             tableData.add(tableModelInstance);
         }
@@ -116,7 +114,8 @@ public class CSMStaffController implements Initializable {
         tableView.setItems(data);
 
     }
-    private void loadTask(){
+
+    private void loadTask() {
         Task<Void> loadDataTask = new Task<>() {
             @Override
             protected Void call() throws Exception {
@@ -164,15 +163,17 @@ public class CSMStaffController implements Initializable {
             searchField.setText("");
         });
     }
+
     public void onLogOutStaffClick(ActionEvent actionEvent) {
-        try{
+        try {
             CSMApplication.switchToLogInView();
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Can't load new window");
         }
     }
+
     public void setStaffName(String staffName) {
-        staffNameLabel.setText("Welcome, " + staffName  + "!");
+        staffNameLabel.setText("Welcome, " + staffName + "!");
     }
 
     public void setStaff(StaffDto staff) {
@@ -201,7 +202,6 @@ public class CSMStaffController implements Initializable {
             return;
         }
 
-
         matchingCase.setResolutionDetails(reportDetails.getText());
         matchingCase.setResolvedDate(resolvedDate);
         matchingCase.setStatus(filterComboBox2.getValue());
@@ -221,9 +221,5 @@ public class CSMStaffController implements Initializable {
             warningAlert.setContentText("Contact system administrator.");
             warningAlert.showAndWait();
         }
-
-
-
-
     }
 }

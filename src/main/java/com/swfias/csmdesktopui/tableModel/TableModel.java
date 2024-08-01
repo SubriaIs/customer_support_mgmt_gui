@@ -16,7 +16,7 @@ public class TableModel {
 
 
     public TableModel(String title, String description, String createdDate, String status, String severity, String assignedTo, String resolutionDetails, String resolvedDate) {
-        this.title= new SimpleStringProperty(title);
+        this.title = new SimpleStringProperty(title);
         this.description = new SimpleStringProperty(description);
         this.createdDate = new SimpleStringProperty(createdDate);
         this.status = new SimpleStringProperty(status);
@@ -64,6 +64,7 @@ public class TableModel {
 
         this.status.set(status);
     }
+
     public String getSeverity() {
 
         return severity.get();

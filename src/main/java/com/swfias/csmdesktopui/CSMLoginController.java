@@ -59,8 +59,6 @@ public class CSMLoginController {
 
     public void onSignUpClick(ActionEvent actionEvent) {
         CSMApplication.switchToSignUpView(actionEvent);
-
-
     }
 
 

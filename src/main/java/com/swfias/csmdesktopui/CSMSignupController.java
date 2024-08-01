@@ -10,9 +10,7 @@ import javafx.stage.Stage;
 import org.swfias.daos.PersonDao;
 import org.swfias.enums.PersonType;
 import org.swfias.services.PersonService;
-
 import java.net.URL;
-import java.util.EnumSet;
 import java.util.ResourceBundle;
 
 public class CSMSignupController implements Initializable {
@@ -47,7 +45,6 @@ public class CSMSignupController implements Initializable {
         PersonService personService = new PersonService(new PersonDao());
         boolean isAdded = personService.addNewPerson(typeField.getValue(), firstNameField.getText(), lastNameField.getText(), signUpPasswordField.getText(), emailField.getText(), addressField.getText(), phoneNumberField.getText());
         if (isAdded == true) {
-
             typeField.setValue(null);
             firstNameField.setText("");
             lastNameField.setText("");
@@ -78,6 +75,4 @@ public class CSMSignupController implements Initializable {
             System.out.println("Can't load new window");
         }
     }
-
-
 }

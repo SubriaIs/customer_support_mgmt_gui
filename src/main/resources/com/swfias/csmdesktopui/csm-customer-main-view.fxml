@@ -36,7 +36,8 @@
                         <TextArea fx:id="reportDescription" prefWidth="500" prefHeight="100" wrapText="true"
                                   style="-fx-alignment: top-left;" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                         <Label styleClass="label3" text="Severity:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                        <ComboBox fx:id="reportSeverity" GridPane.columnIndex="1" GridPane.rowIndex="2" prefWidth="300"/>
+                        <ComboBox fx:id="reportSeverity" GridPane.columnIndex="1" GridPane.rowIndex="2"
+                                  prefWidth="300"/>
                     </GridPane>
                     <HBox alignment="CENTER">
                         <Button styleClass="button2" text="Create" onAction="#onCreateClick"/>
@@ -62,7 +63,7 @@
                             </columns>
                         </TableView>
                     </VBox>
-                    <Label ></Label>
+                    <Label></Label>
                 </VBox>
             </GridPane>
             <stylesheets>
