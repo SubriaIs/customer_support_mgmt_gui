@@ -20,7 +20,6 @@ import org.swfias.services.CaseService;
 import org.swfias.services.PersonService;
 import java.net.URL;
 import java.sql.Date;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.EnumSet;
@@ -40,7 +39,6 @@ public class CSMCustomerController implements Initializable {
     public TextArea reportDescription;
     @FXML
     private Label customerNameLabel;
-
     @FXML
     private TableView<TableModel> tableView;
     @FXML
@@ -61,11 +59,8 @@ public class CSMCustomerController implements Initializable {
     private TableColumn<TableModel, String> column8;
     @FXML
     private TextField searchField;
-
-
     @FXML
     private ComboBox<String> filterComboBox;
-
     private ObservableList<TableModel> data;
     private FilteredList<TableModel> filteredData;
     private List<CaseDto> caseDtos;
@@ -84,8 +79,8 @@ public class CSMCustomerController implements Initializable {
         column8.setCellValueFactory(new PropertyValueFactory<>("resolvedDate"));
 
         reportSeverity.getItems().addAll(EnumSet.allOf(SeverityType.class));
-        this.filterComboBox.getItems().addAll("Title", "Status", "Severity", "Created Date", "Resolved Date");
-
+        this.filterComboBox.getItems().addAll("Title", "Status", "Severity", "Created", "Fix Date");
+        filterComboBox.getSelectionModel().select("Title");
         // Load data from database on a background thread
         loadTask();
     }
@@ -95,7 +90,7 @@ public class CSMCustomerController implements Initializable {
         PersonService personService = new PersonService(new PersonDao());
         caseDtos = caseService.getAllById(customer.getId());
         List<TableModel> tableData = new ArrayList<>();
-        SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
         TableModel tableModelInstance;
         for (CaseDto caseDto : caseDtos) {
             tableModelInstance = new TableModel(
@@ -111,7 +106,6 @@ public class CSMCustomerController implements Initializable {
             tableData.add(tableModelInstance);
         }
         data = FXCollections.observableArrayList(tableData);
-
         tableView.setItems(data);
 
     }
@@ -132,9 +126,9 @@ public class CSMCustomerController implements Initializable {
                         return tableModel.getStatus().toLowerCase().contains(lowerCaseFilter);
                     case "Severity":
                         return tableModel.getSeverity().toLowerCase().contains(lowerCaseFilter);
-                    case "Created Date":
+                    case "Created":
                         return tableModel.getCreatedDate().toLowerCase().contains(lowerCaseFilter);
-                    case "Resolved Date":
+                    case "Fix Date":
                         return tableModel.getResolvedDate().toLowerCase().contains(lowerCaseFilter);
                     default:
                         return false;

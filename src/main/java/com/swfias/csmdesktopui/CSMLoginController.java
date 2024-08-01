@@ -29,7 +29,6 @@ public class CSMLoginController {
         PersonService personService = new PersonService(new PersonDao());
         PersonDto personDto = personService.checkUserLogin(userIdField.getText(), passwordField.getText());
         if (personDto != null) {
-            //statusLogin.setText("Login Success. user id: "+personDto.getId());
             try{
                 if( personDto instanceof CustomerDto){
                     CSMApplication.switchToCustomerView((CustomerDto) personDto);

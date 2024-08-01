@@ -23,6 +23,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.EnumSet;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
@@ -55,6 +56,8 @@ public class CSMStaffController implements Initializable {
     private TextField searchFieldForTitle;
     @FXML
     private ComboBox<String> filterComboBox;
+    @FXML
+    private ComboBox<StatusType> filterComboBox2;
 
     @FXML
     public TextArea reportDetails;
@@ -80,8 +83,10 @@ public class CSMStaffController implements Initializable {
         column7.setCellValueFactory(new PropertyValueFactory<>("resolutionDetails"));
         column8.setCellValueFactory(new PropertyValueFactory<>("resolvedDate"));
 
-        this.filterComboBox.getItems().addAll("Title", "Status", "Severity", "Created Date", "Resolved Date");
-
+        this.filterComboBox.getItems().addAll("Title", "Status", "Severity", "Created", "Fix Date");
+        filterComboBox.getSelectionModel().select("Title");
+        filterComboBox2.getItems().addAll(EnumSet.allOf(StatusType.class));
+        filterComboBox2.getSelectionModel().select(StatusType.OPEN);
         // Load data from database on a background thread
         loadTask();
     }
@@ -91,7 +96,7 @@ public class CSMStaffController implements Initializable {
         PersonService personService = new PersonService(new PersonDao());
         caseDtos = caseService.getByAssignedToId(staff.getId());
         List<TableModel> tableData = new ArrayList<>();
-        SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
         TableModel tableModelInstance;
         for (CaseDto caseDto : caseDtos) {
             tableModelInstance = new TableModel(
@@ -145,9 +150,9 @@ public class CSMStaffController implements Initializable {
                         return tableModel.getStatus().toLowerCase().contains(lowerCaseFilter);
                     case "Severity":
                         return tableModel.getSeverity().toLowerCase().contains(lowerCaseFilter);
-                    case "Created Date":
+                    case "Created":
                         return tableModel.getCreatedDate().toLowerCase().contains(lowerCaseFilter);
-                    case "Resolved Date":
+                    case "Fix Date":
                         return tableModel.getResolvedDate().toLowerCase().contains(lowerCaseFilter);
                     default:
                         return false;
@@ -199,6 +204,7 @@ public class CSMStaffController implements Initializable {
 
         matchingCase.setResolutionDetails(reportDetails.getText());
         matchingCase.setResolvedDate(resolvedDate);
+        matchingCase.setStatus(filterComboBox2.getValue());
         if (caseService.updateCase(matchingCase)) {
             reportDetails.setText("");
             datePicker.setValue(null);

@@ -30,7 +30,9 @@
                                 <TextArea fx:id="reportDetails" prefWidth="500" prefHeight="100" wrapText="true"
                                           style="-fx-alignment: top-left;" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
                                 <Label styleClass="label3" text="Fix date:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-                                <DatePicker fx:id="datePicker" promptText="Select Date" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                                <DatePicker fx:id="datePicker" promptText="Select Date" GridPane.columnIndex="1" GridPane.rowIndex="2" editable="false"/>
+                                <Label styleClass="label3" text="Status:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                                <ComboBox fx:id="filterComboBox2" promptText="Filter by Column" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
                             </GridPane>
                             <HBox alignment="CENTER">
                                 <Button styleClass="button2" text="Update" onAction="#onCreateClickStaff"/>
@@ -60,7 +62,7 @@
                         </VBox>
                     </GridPane>
                     <stylesheets>
-                        <URL value="@customerView.css"/>
+                        <URL value="@customerStaffSignupView.css"/>
                     </stylesheets>
                 </AnchorPane>
             </content>

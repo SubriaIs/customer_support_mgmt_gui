@@ -37,7 +37,7 @@
 }
 
 .tab-pane .tab-header-area .tab:selected {
-    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #C3AED6, #ABF0E9); /* Darker green background for selected tab */
-    -fx-text-fill: white; /* White text */
+    -fx-background-color: linear-gradient(from 0% 0% to 100% 100%, #C3AED6, #ABF0E9);
+    -fx-text-fill: white;
 }
 

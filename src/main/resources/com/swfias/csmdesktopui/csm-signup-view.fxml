@@ -57,7 +57,7 @@
         </AnchorPane>
     </content>
     <stylesheets>
-        <URL value="@adminView.css"/>
+        <URL value="@customerStaffSignupView.css"/>
     </stylesheets>
 </ScrollPane>
 

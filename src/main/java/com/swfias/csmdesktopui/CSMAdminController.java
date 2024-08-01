@@ -119,9 +119,10 @@ public class CSMAdminController implements Initializable {
         column8.setCellValueFactory(new PropertyValueFactory<>("phoneNumber"));
 
         this.filterComboBox.getItems().addAll("Type", "FirstName", "LastName", "UserId", "Email","Phone");
-
-        // Load data from database on a background thread
+        filterComboBox.getSelectionModel().select("Type");
         loadTask();
+
+
         // For second view
         column1_1.setCellValueFactory(new PropertyValueFactory<>("title"));
         column2_1.setCellValueFactory(new PropertyValueFactory<>("description"));
@@ -132,10 +133,8 @@ public class CSMAdminController implements Initializable {
         column7_1.setCellValueFactory(new PropertyValueFactory<>("resolutionDetails"));
         column8_1.setCellValueFactory(new PropertyValueFactory<>("resolvedDate"));
 
-
-        this.filterComboBox2.getItems().addAll("Title", "Status", "Severity", "Created Date", "Resolved Date");
-
-        // Load data from database on a background thread
+        this.filterComboBox2.getItems().addAll("Title", "Status", "Severity", "Created", "Fix Date");
+        filterComboBox2.getSelectionModel().select("Title");
         loadTask2();
     }
 
@@ -256,7 +255,7 @@ public class CSMAdminController implements Initializable {
         PersonService personService = new PersonService(new PersonDao());
         caseDtos = caseService.getAllCases();
         List<TableModel> tableData2 = new ArrayList<>();
-        SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
         TableModel tableModelInstance;
         for (CaseDto caseDto : caseDtos) {
             tableModelInstance = new TableModel(
@@ -293,9 +292,9 @@ public class CSMAdminController implements Initializable {
                         return tableModel2.getStatus().toLowerCase().contains(lowerCaseFilter);
                     case "Severity":
                         return tableModel2.getSeverity().toLowerCase().contains(lowerCaseFilter);
-                    case "Created Date":
+                    case "Created":
                         return tableModel2.getCreatedDate().toLowerCase().contains(lowerCaseFilter);
-                    case "Resolved Date":
+                    case "Fix Date":
                         return tableModel2.getResolvedDate().toLowerCase().contains(lowerCaseFilter);
                     default:
                         return false;
