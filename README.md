@@ -9,17 +9,21 @@ The project includes a login system for authentication, where users can log in w
 
 ### Authentication System
 - **Login**: All users (Customers, Staff, and Admin) must authenticate with a user ID and password.
+  ![Application Screenshot](Authentication%20view.png)
 - **Signup**: New customers can create an account using the signup feature.
+  ![Application Screenshot](Signup%20View.png)
 
 ### Customer View
 - **Create Report**: Customers can create new reports detailing their issues.
 - **View Reports**: Customers can view all their previously submitted reports in a table format.
 - **Search Reports**: Customers can search for specific reports using various parameters.
+    ![Application Screenshot](Customer%20view.png)
 
 ### Staff View
 - **Manage Reports**: Staff members can update the handling status and fixed information of reports that have been assigned to them.
 - **Assigned Reports**: Staff can view all the reports assigned to them.
 - **Search Reports**: Staff can search through their assigned reports based on different criteria.
+    ![Application Screenshot](Staff%20view.png)
 
 ### Admin View
 Admins have access to two primary views:
@@ -28,10 +32,12 @@ Admins have access to two primary views:
     - **Create Users**: Admins can create new users (either Customers, Staff, or Admin).
     - **View User Information**: Admins can view all user-related information (for Customers, Staff, and Admins) in a table.
     - **Search Users**: Admins can search for users using various parameters.
-    
+      ![Application Screenshot](Admin%20view(Person%20Management).png)
+      
 2. **Customer Support (cases) View**:
     - **View Reports**: Admins can see all reports (both created and solved) in a table format.
     - **Search Reports**: Admins can search for reports using various parameters.
+  ![Application Screenshot](Admin%20view(Customer%20Support(Cases)).png)
 
 ## Role-Based Features
 
