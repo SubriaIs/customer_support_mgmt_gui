@@ -1,4 +1,4 @@
-# customer_support_mgmt_gui - JavaFX Project
+# Customer Support Management
 
 ## Overview
 `customer_support_mgmt_gui` is a JavaFX-based project designed to manage customer support interactions. The system is built with three primary roles: **Customer**, **Staff**, and **Admin**. Each role has different levels of access and functionality, including report management and user creation, new report creation, and report handling.
